@@ -9,7 +9,7 @@
 
 (setq my-el-get-packages
       (append
-       '(undo-tree evil lusty-explorer full-ack git-blame google-c-style go-mode)
+       '(undo-tree evil lusty-explorer full-ack git-blame google-c-style go-mode magit)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-el-get-packages)
