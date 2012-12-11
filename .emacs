@@ -9,7 +9,7 @@
 
 (setq my-el-get-packages
       (append
-       '(undo-tree evil lusty-explorer full-ack git-blame google-c-style go-mode magit)
+       '(undo-tree evil lusty-explorer full-ack git-blame google-c-style go-mode magit multi-term)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-el-get-packages)
@@ -45,3 +45,5 @@
 
 (require 'tramp)
 (setq tramp-default-method "scp")
+
+(require 'multi-term)
