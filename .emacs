@@ -11,9 +11,6 @@
 (unless (require 'git-gutter-fringe nil 'noerror)
   (package-install 'git-gutter-fringe))
 
-(unless (require 'color-theme-solarized nil 'noerror)
-  (package-install 'color-theme-solarized))
-
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
     (url-retrieve-synchronously
@@ -28,9 +25,6 @@
 
 (el-get 'sync my-el-get-packages)
 
-(require 'color-theme)
-(load-theme 'solarized-dark)
-
 (require 'evil)
 (push 'mag-menu-mode evil-emacs-state-modes)
 (evil-mode 1)
@@ -40,12 +34,13 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen 1)
-
+(column-number-mode 1)
 (setq-default indent-tabs-mode nil)
 (require 'whitespace)
 (global-whitespace-mode 1)
 (setq whitespace-style '(trailing space tabs tab-mark face))
 (windmove-default-keybindings)
+(global-rainbow-delimiters-mode 1)
 
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
@@ -67,3 +62,13 @@
 (setq git-gutter-fr:side 'right-fringe)
 (global-git-gutter-mode 1)
 (setq git-gutter:always-show-gutter 1)
+
+(load-theme 'obsidian t)
+(if (daemonp)
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (load-theme 'obsidian t)))
+  (load-theme 'obsidian t)
+)
+
+(setq make-backup-files nil)
